@@ -46,13 +46,45 @@
 
 
 //// Gérer les exceptions Try Catch ////
- try{
-    alert(hello);
- }
- catch(error){
-    console.log(error);
-    console.log(error.name); 
-    console.log(error.message);
-    console.log(error.stack);
+//  structure conditionnelle qui permet de gérer les erreurs utile pour debuger le code 
+//  try{
+//     alert(hello);
+//  }
+//  catch(error){
+//     console.log(error);
+//     console.log(error.name); 
+//     console.log(error.message);
+//     console.log(error.stack);
 
- }
+//  }
+
+//  Autre exemple
+
+try{
+   let arme = prompt("Coisisser une arme : épée, hache ou pioche");
+   let degats;
+   switch(arme){
+         case "épée":
+            alert("Vous avez choisi l'épée");
+            degats = 40;
+            break;
+         case "hache":
+            alert("Vous avez choisi la hache");
+            degats = 50;
+            break;
+         case "pioche":
+            alert("Vous avez choisi la pioche");
+            degats = 10;
+            break;
+         default:
+            throw new Error("Vous ne pouvez pas choisir cette arme");
+   }
+   alert(`Vous avez choisi ${arme} avec ${degats} de dégats`);
+
+}catch(e){
+   alert(e.message);
+}
+finally{
+      // Code exécuté à la fin
+      alert("Fin du programme");
+}

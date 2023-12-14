@@ -148,3 +148,110 @@ console.log(arr.sort(function(a, b){
 
 // fonction fléchées 
 console.log(arr.sort((a, b) => a - b));
+
+
+//// Les boucles ////
+/// for .. in -> à privilégier sur les objets  ///
+/// for .. of -> à privilégier sur les tableaux ///
+
+let fruits = ["pomme", "poire", "banane", "fraise", "framboise"];
+
+for (let fruit in fruits) {
+    console.log(fruit);
+    console.log(fruits[fruit]);
+}
+
+for (let fruit of fruits) {
+    console.log(fruit);
+}
+
+let person = {
+    name: "John",
+    age: 30,
+    city: "New-York"
+}
+for (let key in person ){
+    console.log(key);
+    console.log(person[key]);
+}
+
+for ( let [key, value] of Object.entries(person)){
+    console.log(`ma clé : ${key} et ma valeur : ${value}`);
+}
+
+//// foreach() ////
+let pays = ["France", "Belgique", "Italie", "Espagne", "Portugal", "Allemagne", "Angleterre", "Suisse", "Pays-Bas", "Luxembourg"];
+
+// for(let current of pays) {
+//     console.log(current);
+// }
+// equivalent avec un foreach()
+// pays.forEach(function(value, key, tab){
+//     console.log(`Index : ${key} : ${value} - Tableau : ${tab}`);
+// })
+
+
+// pays.forEach(function(ele){
+//     console.log(ele);
+// })
+// equivalent avec une focntion fléchée
+pays.forEach(ele => console.log(ele));
+
+
+// Exemple fonction d'ordre supérieur
+function cunstomForeach(array, callback){
+    for(let i = 0; i < array.length; i++){
+        callback(array[i], i, array)
+    }
+}
+
+let pays = ["France", "Belgique", "Italie", "Espagne", "Portugal", "Allemagne", "Angleterre", "Suisse", "Pays-Bas", "Luxembourg"];
+
+cunstomForeach(pays, function(ele, index, array){
+    console.log(ele, index, array);
+})
+
+//// map() ////
+
+const numbers = [1, 2, 3, 4, 5];
+
+let result = numbers.map(function(el){
+    return el * 2;
+})
+console.log(numbers, result);
+
+
+//// filter ////
+
+const numbers = [54, 23, 66, 12]; 
+
+let filterN = numbers.filter(function(number) {
+    return number % 2 === 0;
+});
+
+console.log(filterN, numbers); // [54, 66]
+
+// Reduce () //
+
+let arr = [1, 2, 3, 4, 5];
+
+let result = arr.reduce(function(acc, currentVal){
+    return acc + currentVal;
+}, 0);
+
+console.log(result);
+
+// moyen sans reduce 
+let i = 0;
+let somme = 0;
+while( i < arr.length){
+    somme += arr[i];
+    i++;
+}
+let moy = somme / arr.length;
+console.log(moy);
+
+// moyen avec reduce 
+let somRed = arr.reduce((acc, val) => acc + val , 0);
+let moyRed = somRed / arr.length;
+console.log(somRed);

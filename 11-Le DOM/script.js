@@ -25,9 +25,9 @@ hellWorld.textContent = 'Hell World';
 let test = document.createElement('p');
 test.textContent = 'test';
 // insérer test à l'intérieur de hellWorld
-// hellWorld.appendChild(test);
+hellWorld.appendChild(test);
 
-// document.body.append(test, hellWorld);
+document.body.append(test, hellWorld);
 
 // Exemple avec prepend -> ajouter avant l'element selectionné 
 let container = document.querySelector('.container');
@@ -39,5 +39,45 @@ container.prepend(helloWorld);
 let helloWorld2 = document.createElement('p');
 helloWorld2.textContent = 'Hello World2';
 container.append(helloWorld2);
+
+// Supprimer un élement
+let titre = document.querySelector('h1');
+titre.remove();
+
+document.querySelector('h1').remove();
+
+
+
+// Modifier le style d'un élement
+document.querySelector('h1').style.textAlign = 'center';
+titre.style.textAlign = 'center';
+
+// Modifier le style d'un en ajoutant une class css
+titre.className = 'colorRed';
+
+
+// Les méthodes de classList
+
+// Ajouter plusieurs class css
+titre.classList.add('colorRed','text');
+
+let element = document.querySelector('#monElement');  
+
+element.className = 'colorRed';
+document.querySelector('#btn').addEventListener('click', function(){
+    // Vérifier si l'élément contient la class colorRed
+    if(element.classList.contains('colorRed')){
+        // Si oui, on la supprime
+        element.classList.remove('colorRed');
+        // Si oui, on la remplace par colorBlue
+        element.classList.replace('colorRed','colorBlue');
+    }
+});
+
+// Faire un interrupteur avec toggle
+document.querySelector('#btn').addEventListener('click', function(){
+    element.classList.toggle('colorRed');
+}
+);
 
 

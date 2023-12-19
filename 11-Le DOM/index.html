@@ -4,10 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <style>
+        .colorRed{
+            background-color: red;
+        }
+        .colorBlue{
+            background-color: blue;
+        }
+        .text{
+            text-align: center;
+        }
+
+        #monElement{
+            border: 2px solid black;
+            padding: 20px;
+            margin: 20px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1 id="monTitre">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad, itaque?</h1>
+        <h1 id="monTitre" class="maClass">Lorem ipsum </h1>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
 
@@ -19,6 +37,11 @@
             <li class="item i5">Lorem, ipsum.</li>
         </ul>
     </div>
+
+
+    <!-- Test classList -->
+    <div id="monElement">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia ducimus laborum debitis saepe dolorum architecto rerum impedit error ad neque.</div>
+    <button id="btn">Remplacer une classe</button>
     
     <script src="script.js"></script>
 </body>

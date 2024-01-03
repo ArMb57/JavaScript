@@ -1,0 +1,100 @@
+*,::before, ::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    min-height:100vh;
+     background: linear-gradient(to right, rgb(1, 72, 43), rgb(3, 231, 162));
+}
+
+.slider-container{
+    background-color: #111;
+    max-width:600px;
+    margin: 200px auto;
+    position: relative;
+    display: grid ;
+    overflow:hidden;
+    border-radius: 5px;
+
+}
+
+.direction-btn
+{
+position:absolute;
+z-index:100;
+top:50%;
+width:50px;
+height:50px;
+border-radius:50%;
+border: 1px solid white;
+display:flex;
+justify-content:center;
+align-items:center;
+background:transparent;
+
+}
+
+.direction-btn img {
+    width:50%;
+    pointer-events: none;
+}
+
+.direction-btn.right{
+    right:10%;
+}
+
+.direction-btn.left{
+    left:10%;
+}
+
+.slide{
+grid-area: 1/1/2/2;
+display:flex;
+justify-content:center;
+align-items:center;
+padding: 50px 0;
+background-color: #111;
+display:none;
+}
+
+.slide.active{
+    display:flex;
+}
+
+.content{
+    text-align:center;
+    color:white;
+}
+
+.content img{
+    width:200px;
+    height:200px;
+    border-radius: 50%;
+    object-fit:cover;
+    object-position:center;
+}
+
+.content h2{
+    font-size:25px;
+    margin-top:15px;
+}
+
+.content p{
+    font-size:20px;
+    margin-top:15px;
+    color:gray;
+}
+
+.content button {
+    font-size: 20px;
+    padding:10px;
+    margin-top: 40px;
+    border-radius: 5px;
+    background: transparent;
+    border: 1px solid white;
+    color:white;
+    width:200px;
+
+}

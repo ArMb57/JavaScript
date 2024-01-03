@@ -110,3 +110,18 @@ form button {
     font-size:18px;
     border-radius:5px;
 }
+
+
+/* Animation injectée par le js  */
+.shake{
+    animation: shake 0.3s linear;
+}
+
+@keyframes shake {
+    25%{
+        transform: translateX(-5px);
+    }
+    50%{
+        transform: translateX(5px);
+    }
+}

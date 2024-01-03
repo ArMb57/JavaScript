@@ -35,11 +35,10 @@ const data = {
 btns.forEach( btn => btn.addEventListener('click',sliding));
 
 function sliding(event){
-    slideOut()
-
+    
     // définir la direction du slide
     data.direction = event.target.className.includes('right') ? 1 : -1;
-
+    
     // Trouver l'indice du slide courant 
     data.slideOut = slides.findIndex(slide => slide.classList.contains('active'));
     
@@ -59,7 +58,8 @@ function sliding(event){
     console.log(" la diapo courante est à l'index " + data.slideOut + " La diapo suivante est à l'index " + data.slideIn);
     console.log(" la direction est : " + data.direction);
     
-    console.log(data)
+    console.log(data);
+    slideOut();
 
 }
 

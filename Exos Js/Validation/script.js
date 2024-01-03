@@ -26,6 +26,49 @@ const validationIcons = document.querySelectorAll('.icone-verif');
 const validationTexts = document.querySelectorAll('.error-msg');
 const inputs = document.querySelectorAll('input');
 
+const form = document.querySelector('form');
+const container = document.querySelector('.container');
+
+
+
+const validInput = {
+    user : false,
+    mail : false,
+    pwd : false,
+    confirm : false
+}
+
+form.addEventListener('submit', submitForm)
+function submitForm(event){
+    event.preventDefault(); // Empecher la soumission du formulaire
+
+    let keys = Object.keys(validInput); // Récupérer les clés des props de l'objet validInput
+    
+    let filterInp = keys.filter(key => !validInput[key]) // récupérer les champs qui sont à false 
+
+if(filterInp.length){
+    // Afficher les erreurs des inputs non valides
+    filterInp.forEach(input => {
+        displayValidation(false, keys.indexOf(input))
+
+        //Ajouter l'animation si il reste des erreurs 
+        container.classList.add('shake');
+
+        setTimeout(() => {
+            container.classList.remove("shake");
+
+        }, 500)
+    })
+}else{
+    alert('données envoyées');
+    form.submit();
+}
+    
+}
+
+
+
+
 // Fonction d'affichage de la validation
 function displayValidation(validation, index){
     if(validation){
@@ -47,6 +90,7 @@ userInput.addEventListener('input',userValiation);
 function userValiation(){
 if(userInput.value.length >= 3){
         displayValidation(true, 0)
+        validInput.user = true;
 }else{
         displayValidation(false, 0)
 }
@@ -62,6 +106,7 @@ function mailValidation(){
 
     if(regexMail.test(mailInput.value)){
         displayValidation(true, 1)
+        validInput.mail = true;
     }else{
         displayValidation(false, 1)
     }
@@ -105,6 +150,7 @@ if(countVerif !== 3){
     displayValidation(false, 2)
 }else{
     displayValidation(true, 2)
+    validInput.pwd = true;
 }
 
 
@@ -160,6 +206,7 @@ function confirmValidation(){
     }
     if(confirmedpwd === pwdInput.value){
         displayValidation(true, 3)
+        validInput.confirm = true;
     }else{
         displayValidation(false, 3)
     }

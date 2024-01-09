@@ -110,6 +110,7 @@ function highLightComb(comb){
 
 resetBtn.addEventListener('click', resetGame);
 
+
 function resetGame(){
 //réinitialiser le tableau game
     for (let i = 0; i < game.length; i++) {

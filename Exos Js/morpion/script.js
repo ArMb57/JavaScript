@@ -107,9 +107,14 @@ function highLightComb(comb){
 
 
 // reset la partie 
-
 resetBtn.addEventListener('click', resetGame);
 
+// reset avec la touche r 
+document.addEventListener('keydown', function(event){
+    if(event.key === 'r' || event.key === 'R'){
+        resetGame();
+    }
+});
 
 function resetGame(){
 //réinitialiser le tableau game

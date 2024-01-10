@@ -100,67 +100,80 @@
 
 
 // Exemple Geoloc 
-// function getGeoloc(){
-//     return new Promise((resolve, reject) => {
-//         if('geolocation' in navigator){
-//             navigator.geolocation.getCurrentPosition(resolve, reject);
-//         }else{
-//             reject('Geoloc non disponible')
-//         }
-//     });
-// }
+function getGeoloc(){
+    return new Promise((resolve, reject) => {
+        if('geolocation' in navigator){
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+        }else{
+            reject('Geoloc non disponible')
+        }
+    });
+}
 
-// function encoder(data){
-//     return btoa(encodeURIComponent(data));
-// }
+function encoder(data){
+    return btoa(encodeURIComponent(data));
+}
 
-// getGeoloc()
-// .then((position) => {
-//     const latitude = position.coords.latitude;
-//     const longitude = position.coords.longitude;
+function decoder (data){
+    return atob(decodeURIComponent(data));
+}
 
-//     // Encodage des données
-//     const latEnc = encoder(latitude);
-//     const longEnc = encoder(longitude);
+
+
+getGeoloc()
+.then((position) => {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+
+    // Encodage des données
+    const latEnc = encoder(latitude.toString());
+    const longEnc = encoder(longitude.toString());
+
+    // Décodage des données
+    const latDec = decoder(latEnc);
+    const longDec = decoder(longEnc);
     
-//     console.log('Latitude encodé: ' + latEnc);
-//     console.log('Longitude encodé: ' + longEnc);
-// })
-// .catch((error) => {
-//     console.log(error)
-// });
+    console.log('Latitude encodé: ' + latEnc);
+    console.log('Longitude encodé: ' + longEnc);
+
+    console.log('Latitude décodé: ' + latDec);
+    console.log('Longitude décodé: ' + longDec);
+})
+.catch((error) => {
+    console.log(error)
+});
 
 
 // Async await 
-function loadScript(script){
-        return new Promise((resolve, reject) => {
-            let element = document.createElement('script');
-            element.src = script;
-            document.body.appendChild(element);
+// function loadScript(script){
+//         return new Promise((resolve, reject) => {
+//             let element = document.createElement('script');
+//             element.src = script;
+//             document.body.appendChild(element);
     
-            element.addEventListener('load', () => {
-                resolve('script chargé')
-            });
+//             element.addEventListener('load', () => {
+//                 resolve('script chargé')
+//             });
     
-            element.addEventListener('error', () => {
-                reject(new Error('Opération impossible pour le script ' + script))
-            });
+//             element.addEventListener('error', () => {
+//                 reject(new Error('Opération impossible pour le script ' + script))
+//             });
     
-        });
-    };
+//         });
+//     };
 
-    async function result(){
-        try{
-            const scriptA = await loadScript('script2.js');
-            console.log(scriptA);
+//     async function result(){
+//         try{
+//             const scriptA = await loadScript('script2.js');
+//             console.log(scriptA);
 
-            const scriptB = await loadScript('script3.js');
-            console.log(scriptB);
+//             const scriptB = await loadScript('script3.js');
+//             console.log(scriptB);
 
-        }catch(error){
-            console.log(error);
-            document.body.lastChild.remove();
-        }
-    }
+//         }catch(error){
+//             console.log(error);
+//             document.body.lastChild.remove();
+//         }
+//     }
 
-    result();
+//     result();

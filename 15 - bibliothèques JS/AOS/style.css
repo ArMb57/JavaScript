@@ -1,0 +1,28 @@
+body{
+    background-color: #000;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+ 
+}
+
+.left, .right{
+    width:250px;
+    height:250px;
+    margin:50px;
+   
+}
+
+.left{
+    background-color: green;
+    
+}
+
+.right{
+    background-color: red;
+}

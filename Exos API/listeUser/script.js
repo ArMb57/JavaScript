@@ -1,0 +1,2 @@
+// Pour réaliser cet exercice vous utiliserez l'API suivante : https://randomuser.me/api/?results=50 
+// Le but étant de récupérer 50 utilisateurs et de les afficher dans une liste HTML. Puis de pouvoir filtrer cette liste en fonction de la saisie de l'utilisateur dans un champ de recherche.

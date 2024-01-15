@@ -53,10 +53,10 @@
 // Map() est un objet qui stock des paires clé/valeur. Contrairement aux objets, les clés peuvent être de n'importe quel type (string, number, boolean, object, function, etc...)
 
 // Exemple 1 comparaison renvoyer longueur d'un objet littéral et d'un Map()
-// let obj = {
-//     name: "John",
-//     age: 30
-// };
+let obj = {
+    name: "John",
+    age: 30
+};
 // // Renvoyer le nb d'éléments dans un objet littéral
 // console.log(Object.keys(obj).length);
 
@@ -70,15 +70,15 @@
 // let users = new Map();
 
 // // Envoyer des données dans le Map()
-// users.set("Mark zuckerberg", {
-//     email: "mark@facebook.com",
-//     poste: "PDG"
-// });
+users.set("Mark zuckerberg", {
+    email: "mark@facebook.com",
+    poste: "PDG"
+});
 
-// users.set("Elon Musk", {
-//     email: "elon@musk.com",
-//     poste: "sauver le monde"
-// });
+users.set("Elon Musk", {
+    email: "elon@musk.com",
+    poste: "sauver le monde"
+});
 
 // // Récupérer les données dans le Map()
 // console.log(users.get("Mark zuckerberg"));

@@ -46,16 +46,18 @@
 
 
 // question comment stocker cette obj dans des var distinctes
-// let user = {
-//     nom: 'Jean',
-//     prenom: 'Dupont',
-//     age: 35, 
-//     adresse: {
-//         rue: 'rue de la paix',
-//         ville: 'Paris'
-//     }
-// };
-
+let user = {
+    nom: 'Jean',
+    prenom: 'Dupont',
+    age: 35, 
+    adresse: {
+        rue: 'rue de la paix',
+        ville: 'Paris'
+    }
+};
+let {nom, prenom, age} = user;
+let {rue, ville} = user.adresse;
+console.log(nom, prenom, age, rue, ville);
 
 
 // Décomposition ou spread operator 
@@ -98,16 +100,16 @@
 // console.log(add(1, 2)); 
 
 // somme de nombres avec le rest parameter
-function sum(...nb){
-    let total = 0;
-    for(let n of nb){
-        total += n;
-    }
-    return total;
-}
-console.log(sum(1, 2, 3, 4, 5)); // affiche 15
+// function sum(...nb){
+//     let total = 0;
+//     for(let n of nb){
+//         total += n;
+//     }
+//     return total;
+// }
+// console.log(sum(1, 2, 3, 4, 5)); // affiche 15
 
-function sum(...nb){
-    return nb.reduce((total, n) => total + n);
-}
-console.log(sum(1, 2, 3, 4, 5)); // affiche 15
+// function sum(...nb){
+//     return nb.reduce((total, n) => total + n);
+// }
+// console.log(sum(1, 2, 3, 4, 5)); // affiche 15

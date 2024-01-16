@@ -23,7 +23,13 @@
 // console.log(monSet);
 
 // QUESTION : Comment faire pour supprimer les valeurs dupliquer sans utiliser un Set() ? 
-
+// let result = [];
+// for(let i = 0; i < nombres.length; i++){
+//     if(result.indexOf(nombres[i]) === -1){
+//         result.push(nombres[i]);
+//     }
+// }
+// console.log(result);
 
 
 // Exemple 2 : utilisations des méthodes propres au Set()
@@ -53,10 +59,10 @@
 // Map() est un objet qui stock des paires clé/valeur. Contrairement aux objets, les clés peuvent être de n'importe quel type (string, number, boolean, object, function, etc...)
 
 // Exemple 1 comparaison renvoyer longueur d'un objet littéral et d'un Map()
-let obj = {
-    name: "John",
-    age: 30
-};
+// let obj = {
+//     name: "John",
+//     age: 30
+// };
 // // Renvoyer le nb d'éléments dans un objet littéral
 // console.log(Object.keys(obj).length);
 
@@ -70,15 +76,15 @@ let obj = {
 // let users = new Map();
 
 // // Envoyer des données dans le Map()
-users.set("Mark zuckerberg", {
-    email: "mark@facebook.com",
-    poste: "PDG"
-});
+// users.set("Mark zuckerberg", {
+//     email: "mark@facebook.com",
+//     poste: "PDG"
+// });
 
-users.set("Elon Musk", {
-    email: "elon@musk.com",
-    poste: "sauver le monde"
-});
+// users.set("Elon Musk", {
+//     email: "elon@musk.com",
+//     poste: "sauver le monde"
+// });
 
 // // Récupérer les données dans le Map()
 // console.log(users.get("Mark zuckerberg"));
@@ -126,19 +132,25 @@ users.set("Elon Musk", {
 
 // QUESTION : comment récupérer l'heure sur un autre fuseau horaire ?
 
-
-
+const date = new Date();
+const UsDate = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'America/Los_Angeles',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit'
+}).format(date);
+console.log(UsDate);
 
 
 // Objet Math()
-let x = 4.3;
-let y = 5.6;
-console.log(Math.abs(x)); // renvoie 4.3
-console.log(Math.ceil(x)); // renvoie 5
-console.log(Math.floor(x)); // renvoie 4 
-console.log(Math.round(x)); // renvoie 4
-console.log(Math.max(x, y)); // renvoie 5.6
-console.log(Math.min(x, y)); // renvoie 5.6
-console.log(Math.pow(x, 2)); // renvoie 18.49
-console.log(Math.sqrt(x)); // renvoie 2.07
-console.log(Math.random());
+// let x = 4.3;
+// let y = 5.6;
+// console.log(Math.abs(x)); // renvoie 4.3
+// console.log(Math.ceil(x)); // renvoie 5
+// console.log(Math.floor(x)); // renvoie 4 
+// console.log(Math.round(x)); // renvoie 4
+// console.log(Math.max(x, y)); // renvoie 5.6
+// console.log(Math.min(x, y)); // renvoie 5.6
+// console.log(Math.pow(x, 2)); // renvoie 18.49
+// console.log(Math.sqrt(x)); // renvoie 2.07
+// console.log(Math.random());

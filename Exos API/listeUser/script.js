@@ -3,11 +3,10 @@ let dataAPI;
 
 // récupérer les données de l'API 
 async function getUsers() {
-    try{
-    const response = await fetch('https://randomuser.me/api/?nat=us,dk,fr,gb&results=50');
+try{
+    const response = await fetch('https://randomuser.me/api/?nat=fr&results=50');
     const {results} = await response.json();
     dataAPI = results;
-    console.log(results)
     createList(dataAPI);
 
 }
@@ -50,16 +49,16 @@ function filterData(e) {
 
     resultsDisplay.innerHTML = '';
     let searchedValue = e.target.value;
-    // const filteredData  = dataAPI.filter(user => user.name.first.toLowerCase().includes(searchedValue));
+
     const filteredData  = dataAPI.filter(user => searching(user));
   
     function searching(user){
 
-
         const types = {
             firstname: user.name.first.toLowerCase(),
             lastname: user.name.last.toLowerCase(),
-            tel: user.phone,
+            // tel: user.phone.match(/\d+/g).join(''),
+            tel: user.phone.replace(/[^\d]/g, ''),
         }
 
         for(let prop in types){

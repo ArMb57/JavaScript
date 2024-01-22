@@ -1,45 +1,72 @@
-// Créez un simulateur de combat . Vous devrez écrire du programme pour définir deux classes,     Magicien et Guerrier, avec des méthodes pour attaquer un autre personnage et pour évoluer de niveau.
+class Personnage {
+    constructor(pseudo, classe, sante, attaque) {
+      this.pseudo     = pseudo;
+      this.classe     = classe;
+      this.sante      = sante;
+      this.attaque    = attaque;
+      this.niveau     = 1;
+    }
+    
+    get informations() {
+      return this.pseudo + " (" + this.classe + ") a " + this.sante + " points de vie et est au niveau " + this.niveau + ".";
+    }
+    
+    evoluer() {
+      this.niveau++;
+      console.log(this.pseudo + ' passe au niveau ' + this.niveau + ' !');
+    }
+    
+    verifierSante() {
+      if(this.sante <= 0) {
+        this.sante = 0;
+        console.log(this.pseudo + " a perdu !");
+      }
+    }
+  }
+ 
+  class Magicien extends Personnage {
+    constructor(pseudo, classe = "magicien", sante = 170, attaque = 90) {
+      super(pseudo, classe, sante, attaque);
+    }
+    
 
-// Instructions :
-
-//    1-  Créer une classe Personnage avec les propriétés suivantes :
-
-//     pseudo : le nom du personnage
-//     classe : la classe du personnage 
-//     sante : les points de vie du personnage
-//     attaque : la puissance d'attaque du personnage
-//     niveau : le niveau du personnage, initialisé à 1
-
-//     Ajouter une méthode informations à la classe Personnage qui renvoie une chaîne de caractères contenant les informations suivantes sur le personnage : pseudo, classe, points de vie et niveau.
-
-//     Ajouter une méthode evoluer() à la classe Personnage qui incrémente le niveau du personnage de 1 et affiche une notification de niveau.
-
-//     Ajouter une méthode verifierSante() à la classe Personnage qui vérifie si le personnage est mort (santé <= 0) et affiche une notification si c'est le cas.
-
-
-
-
-//     2- Créer une classe Magicien qui hérite de la classe Personnage avec les propriétés suivantes :
-
-//     sante initialisé à 170
-//     attaque initialisé à 90
-//     classe initialisé à "magicien"
-
-//     Ajouter une méthode attaquer() à la classe Magicien qui inflige des dégâts à un autre personnage en utilisant une attaque magique et met à jour la santé de l'ennemi. Cette méthode doit également appeler les méthodes evoluer() et verifierSante() du personnage attaqué.
-
-//     Ajouter une méthode coupSpecial() à la classe Magicien qui inflige des dégâts supplémentaires à un autre personnage en utilisant un sort de puissance supérieure et met à jour la santé de l'ennemi. Cette méthode doit également appeler la méthode verifierSante() du personnage attaqué.
-
-
-
-
-
-
-//     3- Créer une classe Guerrier qui hérite de la classe Personnage avec les propriétés suivantes :
-
-//     sante initialisé à 350
-//     attaque initialisé à 50
-//     classe initialisé à "guerrier"
-
-//     Ajouter une méthode attaquer() à la classe Guerrier qui inflige des dégâts à un autre personnage en utilisant une attaque physique et met à jour la santé de l'ennemi. Cette méthode doit également appeler les méthodes evoluer() et verifierSante() du personnage attaqué.
-
-//     Ajouter une méthode coupSpecial() à la classe Guerrier qui inflige des dégâts supplémentaires à un autre personnage en utilisant une arme spéciale et met à jour la santé de l'ennemi. Cette méthode doit également appeler la méthode verifierSante() du personnage attaqué
+    
+    attaquer(personnage) {
+      personnage.sante -= this.attaque;
+      console.log(this.pseudo + ' attaque ' + personnage.pseudo + ' en lançant un sort (' + this.attaque + ' dégâts)');
+      
+      this.evoluer();
+      personnage.verifierSante();
+    }
+    
+    coupSpecial(personnage) {
+      personnage.sante -= this.attaque * 5;
+      console.log(this.pseudo + ' attaque avec son coup spécial puissance des arcanes ' + personnage.pseudo + ' (' + this.attaque * 5 + ' dégâts)');
+      personnage.verifierSante();
+    }
+  }
+  
+  class Guerrier extends Personnage {
+    constructor(pseudo) {
+      super(pseudo, "guerrier", 350, 50);
+    }
+    
+    attaquer(personnage) {
+      personnage.sante -= this.attaque;
+      console.log(this.pseudo + ' attaque ' + personnage.pseudo + ' avec son épée (' + this.attaque + ' dégâts)');
+      
+      this.evoluer();
+      personnage.verifierSante();
+    }
+    
+    coupSpecial(personnage) {
+      personnage.sante -= this.attaque * 5;
+      console.log(this.pseudo + ' attaque avec son coup spécial haches de guerre ' + personnage.pseudo + ' (' + this.attaque * 5 + ' dégâts)');
+      personnage.verifierSante();
+    }
+  }
+  
+  var gandalf = new Magicien('Gandalf', 'magicien', 200, 100);
+  var thor    = new Guerrier('Thor');
+  console.log(thor.informations);
+  console.log(gandalf.informations);
